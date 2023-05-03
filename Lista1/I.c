@@ -1,30 +1,32 @@
 #include <stdio.h>
+#include <stdbool.h>
 
-int main(){
+int main (){
 
-    int entradas, max;
-    int S, E;
-    int contador = 0;
+	int N, max;
+	int i, S, E;
+	short lotacaoAtual;
+	bool ultrapassou = false;
 
-    scanf("%d %d", &entradas, &max);
+	scanf("%d %d", &N, &max);
 
-    int soma;
+	lotacaoAtual = 0;
+	for (i = 0; i < N; i++)
+	{
 
-    for(int i = 0; i<entradas; i++){
-        scanf("%d %d", &S, &E);
-        soma = (S + E);
-        if(soma >= max){
-            contador++;
-        }
-        soma = 0;
-    }
+		scanf("%d %d", &S, &E);
 
-    if(contador>0){
-            printf("S\n");
-        } else {
-            printf("N\n");
-        }
+		lotacaoAtual += E - S;
 
+		if (lotacaoAtual > max && ultrapassou == false)
+			ultrapassou = true;
+
+	}
+
+	if (ultrapassou)
+		printf("S\n");
+	else
+		printf("N\n");
+    
     return 0;
-
 }
