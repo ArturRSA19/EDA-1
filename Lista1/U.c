@@ -1,34 +1,31 @@
 #include <stdio.h>
-#include <string.h>
 
 #define T 1001
 
-void reverterString(char* str) {
-    int inicio = 0;
-    int fim = strlen(str) - 1;
+int main(){
 
-    while (inicio < fim) {
-        // Troca os caracteres
-        char temp = str[inicio];
-        str[inicio] = str[fim];
-        str[fim] = temp;
+    char string[T], stringInversa[T];
+    int i, j, fim;
 
-        // Incrementa o início e decrementa o fim
-        inicio++;
-        fim--;
+    fgets(string, T, stdin);
+
+    fim = 0;
+    while(string[fim] != '\0' && string[fim] != '\n'){
+        fim++;
     }
-}
 
-int main() {
-    char X[T];
+    i = fim - 1;
+    j=0;
 
-    fgets(X, sizeof(X), stdin);
+    while(j<fim){
+        stringInversa[j] = string[i];
+        i--;
+        j++;
+    }
 
-    X[strcspn(X, "\n")] = '\0';
+    stringInversa[fim] = '\0';
 
-    reverterString(X);
-
-    printf("%s\n", X);
+    printf("%s\n", stringInversa);
 
     return 0;
 }
